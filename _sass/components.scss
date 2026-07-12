@@ -77,6 +77,14 @@
     width: auto;
 }
 
+// At 375px the two badges plus their clear space overflow the column and wrap
+// onto separate rows; shrinking them keeps the pair on one line.
+@media (max-width: 400px) {
+    .storeBadges img {
+        height: 44px;
+    }
+}
+
 .storeBadges a {
     transition: transform $t-fast ease;
 }

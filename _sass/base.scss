@@ -66,6 +66,12 @@ picture {
     max-width: 100%;
 }
 
+// Without this the width/height attributes pin the rendered height, so an image
+// scaled down by `width: 100%` stretches vertically instead of keeping its ratio.
+img {
+    height: auto;
+}
+
 a {
     color: $accent;
     text-decoration: none;
