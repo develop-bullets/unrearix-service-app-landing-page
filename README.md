@@ -1,113 +1,83 @@
-# Automatic App Landing Page
-**Create and deploy an iOS app landing page on GitHub Pages in only five minutes.**
+# Unrearix — landing page
 
-Designed for GitHub Pages for super easy set up. 
+The marketing site for the Unrearix app, served at **[unrearix.com](https://unrearix.com)**.
+Jekyll, built by GitHub Pages from `master`. No JavaScript, no CDN requests.
 
-🔧 Fork this repo
+It also hosts the two URLs the app stores require:
+`/privacy/` (privacy policy) and `/terms/`.
 
-🗝 Enter iOS App ID in `_config.yml`
+## Run it locally
 
-📲 Upload video preview or screenshot
+```bash
+bundle install
+bundle exec jekyll serve --livereload   # http://127.0.0.1:4000
+```
 
-🎨 Customise site in `_config.yml` (no HTML/CSS)
+## Copy rules — read before editing
 
-📝 Write Privacy Policy as markdown in `privacypolicy.md`
+The app was rejected once under **App Store Guideline 4.2.2** and pivoted from an
+artist-promo app to a music app. The store copy is written to stay on the right
+side of that line, and this site must not undo it. The rules, from
+`docs/store-listing.md` §4 and `docs/redesign-4.2.2.md` in the app repo:
 
-🕒 Keep a changelog in `CHANGELOG.md`
+1. **Never claim "unlimited streaming" or "stream all songs."** In-app playback
+   covers the bundled tracks (currently 5); the catalogue is 48. The honest
+   framing is *"browse the full discography and play in the app."*
+2. **Keep external platforms in the background.** YouTube and Instagram are
+   follow CTAs, nothing more.
+3. **No Spotify or Apple Music links.** Those artist accounts do not exist.
+4. **iPhone only.** Never show an iPad mockup — the app does not ship for iPad.
+5. Body copy says `Unrearix`. Only the wordmark is `UNREARIX`. Maker credit is
+   "Made by Bullets".
 
-✅ Site becomes live at GitHub Pages repository URL, e.g. `https://your-username.github.io/your-repo-name/`.
+A build must keep passing this:
 
-<img src="https://emilbaehr.com/files/jayson1.png" width="440"> <img src="https://emilbaehr.com/files/slor1.png" width="440">
+```bash
+bundle exec jekyll build
+grep -rniE "stream (all|unlimited)|unlimited streaming|stream anytime|spotify|apple music|ipad" \
+  _site --include="*.html" | grep -vi "apple-touch"   # must print nothing
+```
 
+## Where things live
 
+| What | Where |
+|---|---|
+| All copy, links, feature list, screenshot captions | `_config.yml` |
+| Brand tokens (colour, type, spacing) | `_sass/tokens.scss` — mirrors the app's `docs/design-tokens.md` |
+| Page sections | `_includes/{hero,features,screens,band,download}.html` |
+| Icons | `_includes/icons.html` (inline SVG sprite) |
+| Legal + changelog | `_pages/` |
 
+Colours and fonts are **tokens, not settings** — they live in SCSS, not
+`_config.yml`. Change them only when the app's design tokens change.
 
-## Quick Start
+## Refreshing the screenshots
 
-### Step 1: Fork this repo.
-After forking the repo, your site will be live immediately on your personal Github Pages account, e.g. `https://yourusername.github.io/your-repo-name/`.
+Sources are the frameless English captures in the app repo. They already contain
+the status bar and Dynamic Island, so the site only supplies a CSS bezel.
 
-*Make sure GitHub Pages is enabled for your repo. It might take some time for the site to propagate entirely.*
+```bash
+SRC=../unrearix/store-screenshots/_pipeline/sources/ios_en
+for f in 1_player 2_music 3_artist 4_videos 5_create 6_lounge; do
+  sips -Z 1434 "$SRC/$f.png" --out "assets/screens/$f@2x.png"
+  sips -Z 717  "$SRC/$f.png" --out "assets/screens/$f.png"
+  cwebp -q 82 "assets/screens/$f@2x.png" -o "assets/screens/$f@2x.webp"
+  cwebp -q 82 "assets/screens/$f.png"    -o "assets/screens/$f.webp"
+done
+```
 
-
-
-### Step 2: Enter iOS App ID in `_config.yml`
-Enter your iOS app ID in the `ios_app_id` field and commit your changes. Your site will automatically rebuild with your app icon, name, price and link to App Store.
-
-You can go on with customising almost anything in the `_config.yml` file. 
-
-Things you can customise in `_config.yml`:
-- App Name
-- App Icon
-- App Description
-- App Price
-- App Store Link
-- Play Store Link
-- Press Kit Download Link
-- Cover Image
-- Cover Overlay Color
-- Background Color
-- Text Colors
-- iPhone Device Color
-- Your Name / Company Name
-- Link to Website
-- Social Links and Contact Info
-- Feature List (Title, text, icon)
-
-
-
-### Step 3: Add screenshot or video
-
-#### Adding a screenshot
-Upload a `.png` or `.jpg` of your app to the folder `assets/screenshot/`. The name does not matter. Be sure to delete the placeholder `yourscreenshot.png`.
-
-#### Adding video
-Upload your video to the folder `assets/videos/`. To have support for most browsers, you need to upload two files – one for Safari and one for Chrome/Firefox.
-
-Video formats supported by Chrome and Firefox:
-- `.webm`
-- `.ogg`
-
-Video formats supported by Safari:
-- `.mp4`
-- `.mov`
-
-#### Resolutions
-The videos and screenshots must have one of the following resolutions:
-- 828x1792
-- 1125x2436
-- 1242x2688
-
-
-
-### Step 4: Edit (or remove) Privacy Policy and Changelog
-Your site automatically includes pages for a Privacy Policy and a Changelog. Change the content of these pages by editing the `privacypolicy.md` and `CHANGELOG.md` files in the `_pages` directory.
-
-In each of the markdown files, you can set the `include_in_header:` value to either `true` or `false`. This determines if the page is included in the top navigation.
-By default, only the Changelog is included in the top navigation. The title of the navigation item can also be edited, by editing the `title:` in each markdown file.
-
-If you need to, you can create additional markdown based pages just by creating an `.md` file like the `privacypolicy.md` and `CHANGELOG.md` files in the `_pages` directory.
-
-**Please note:** The Privacy Policy and Changelog provided are written using dummy text, so please adapt each of them for your own app.
-You can also choose not to include these pages, by simple deleting the `privacypolicy.md` and `CHANGELOG.md` files.
-
-
-
-
-## Feedback
-If you have feedback regarding bugs or improvements, open an issue, @ me on Twitter or write me an email. You can find my contact info on my website.
-
-I'd love to see the sites you create using this little tool.
+`cwebp` comes from `brew install webp`. The Open Graph image
+(`assets/og-image.jpg`) is derived from the Play feature graphic,
+`store-screenshots/feature/en.png`.
 
 ## Credits
-- [Jekyll](https://github.com/jekyll/jekyll)
-- [FontAwesome](https://fontawesome.github.io/Font-Awesome/)
 
-## Donations
-[Donations are welcome](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=S8ZZT3JXJPN92&currency_code=USD&source=url)
+Fonts: **Anton** and **Archivo**, both SIL Open Font License — see
+`assets/fonts/*-OFL.txt`.
 
-## Author
-[Emil Baehr](https://emilbaehr.com/)
+The Jekyll scaffolding started life as
+[Automatic App Landing Page](https://github.com/emilbaehr/automatic-app-landing-page)
+by Emil Baehr (MIT, see `LICENSE`). The layouts, styles and content have since
+been rewritten; the licence notice is retained as MIT requires.
 
-## License
-[MIT License](LICENSE)
+Site content and app assets: © Bullets. All rights reserved.

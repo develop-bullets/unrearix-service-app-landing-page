@@ -1,0 +1,30 @@
+<section class="hero">
+	<div class="glow"></div>
+	<div class="container hero__inner">
+		<div class="hero__copy">
+			<span class="kicker">{{ site.app_kicker }}</span>
+			<h1>{{ site.app_headline }}</h1>
+			<p class="hero__lede">{{ site.app_description }}</p>
+			<p class="hero__meta">{{ site.app_meta }}</p>
+			{% include store-badges.html %}
+		</div>
+
+		{%- assign shot = site.screens | first -%}
+		<div class="hero__device">
+			<div class="device">
+				<picture>
+					<source
+						type="image/webp"
+						srcset="{{ '/assets/screens/' | append: shot.file | append: '.webp' | relative_url }} 330w,
+						        {{ '/assets/screens/' | append: shot.file | append: '@2x.webp' | relative_url }} 660w"
+						sizes="(max-width: 999px) 300px, 330px">
+					<img
+						src="{{ '/assets/screens/' | append: shot.file | append: '.png' | relative_url }}"
+						width="330" height="717"
+						fetchpriority="high" decoding="async"
+						alt="{{ shot.alt }}">
+				</picture>
+			</div>
+		</div>
+	</div>
+</section>

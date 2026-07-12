@@ -1,0 +1,185 @@
+// ---- Device frame -----------------------------------------------------------
+// The source captures already contain the status bar and Dynamic Island, so this
+// only has to supply the bezel. iPhone only — the app does not ship for iPad.
+.device {
+    padding: 8px;
+    background: linear-gradient(160deg, $surface-hi, $surface);
+    border-radius: $r-device;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+
+    img {
+        width: 100%;
+        aspect-ratio: 1320 / 2868;
+        border-radius: calc(#{$r-device} - 8px);
+    }
+}
+
+// ---- Buttons ----------------------------------------------------------------
+// Mirrors the app's elevatedButtonTheme: accent fill, near-black label, r14, h52.
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-sm;
+    height: 52px;
+    padding: 0 24px;
+    border-radius: $r-btn;
+    font-family: $font-body;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: transform $t-fast ease, background-color $t-fast ease, opacity $t-fast ease;
+}
+
+.btn:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn--primary {
+    background: $accent;
+    color: $on-accent;
+}
+
+.btn--primary:hover {
+    background: lighten($accent, 6%);
+}
+
+.btn--ghost {
+    background: $surface-hi;
+    color: $text;
+    box-shadow: inset 0 0 0 1px $divider;
+}
+
+.btn--sm {
+    height: 40px;
+    padding: 0 18px;
+    font-size: 14px;
+}
+
+// Official store badges keep their own artwork; we only normalise the height.
+// The gap doubles as Google's required clear space (>= 1/4 of the badge height).
+.storeBadges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-lg;
+    align-items: center;
+}
+
+.storeBadges img {
+    height: 52px;
+    width: auto;
+}
+
+.storeBadges a {
+    transition: transform $t-fast ease;
+}
+
+.storeBadges a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+// ---- Icons ------------------------------------------------------------------
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.iconTile {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: $r-thumb;
+    background: rgba($accent, 0.14);
+    color: $accent;
+    margin-bottom: $gap-lg;
+}
+
+// ---- Screenshot rail --------------------------------------------------------
+// Horizontal scroll-snap: 6 tall 9:19.5 shots would stack into an endless page
+// on mobile if laid out as a grid.
+.rail {
+    display: flex;
+    gap: $gap-xl;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px $gap-page $gap-xl;
+    scroll-padding-inline: $gap-page;
+}
+
+.rail::-webkit-scrollbar {
+    display: none;
+}
+
+.rail__item {
+    flex: 0 0 clamp(230px, 68vw, 280px);
+    scroll-snap-align: center;
+    margin: 0;
+}
+
+.rail__caption {
+    margin-top: $gap-lg;
+    text-align: center;
+}
+
+.rail__caption p {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: $text;
+}
+
+@media (min-width: $bp-md) {
+    .rail {
+        scroll-snap-align: start;
+    }
+
+    .rail__item {
+        flex-basis: 280px;
+        scroll-snap-align: start;
+    }
+}
+
+// A hint that the rail scrolls, since there is no visible scrollbar.
+.railHint {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: $muted;
+}
+
+// ---- Decorative glow --------------------------------------------------------
+// Echoes the magenta bloom in the Play feature graphic.
+.glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(58% 46% at 72% 18%, rgba($accent, 0.26), transparent 70%),
+        radial-gradient(46% 40% at 8% 8%, rgba($blue, 0.10), transparent 68%);
+}
+
+// ---- Card -------------------------------------------------------------------
+.card {
+    background: $surface-hi;
+    border-radius: $r-card;
+    padding: $gap-page;
+    box-shadow: inset 0 0 0 1px $divider;
+}

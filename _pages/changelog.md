@@ -1,101 +1,23 @@
 ---
 layout: page
 title: What's New
-include_in_header: false
 ---
 
-# Changelog
+# What's New
 
-[//]: # (Here you can keep a changelog for your app. Edit the markdown based CHANGELOG.md which is located in the _pages directory. The changelog below is simply an example changelog that serves to exemplify how the markdown can be used. You can be as creative as you want with the markdown.)
+### `Initial release`
 
-[//]: # (<br>)
+# **26.27.5**
 
-[//]: # (### `Latest`)
+Welcome to the official Unrearix app. Play songs with synced lyrics, watch every video, build your library, and unlock your fan pass. Thanks for listening.
 
-[//]: # (# **25.38.0**)
+#### Highlights
 
-[//]: # (Enjoy a safer experience! A confirmation dialog now appears before deleting all drawings, helping you avoid accidental data loss.)
-
-[//]: # ()
-[//]: # (#### What's New)
-
-[//]: # (- Added confirmation before deleting all drawings.)
-
-[//]: # ()
-[//]: # (<br>)
-
-[//]: # ()
-[//]: # (________)
-
-[//]: # (<br>)
-
-### `Initial Release`
-# **25.44.0**
-Unrearix lets you explore and listen to songs created by the artist Unrearix.
-Discover original tracks, exclusive releases, and enjoy seamless streaming anytime, anywhere.
-Experience music crafted with emotion and artistry — all within one simple app.
-
-[//]: # (#### What's New)
-
-[//]: # ()
-[//]: # (- Draw using black, red, blue, and green colors)
-
-[//]: # ()
-[//]: # (- Choose from Small / Medium / Large brush sizes)
-
-[//]: # ()
-[//]: # (- Supports Undo / Redo actions)
-
-[//]: # ()
-[//]: # (- Save and delete your drawings)
-
-[//]: # ()
-[//]: # (- User-friendly interface)
-
-<br>
-
-[//]: # (## **Version 1.1**)
-
-[//]: # ()
-[//]: # (Abnormal and formidable against much the before well improper more spent far heron amicably iguana plainly swanky upon mammoth **much paid darn some tapir** some glared save crud more regarding one accommodating gosh cannily and on hungry a more goodness inside merry yikes wedded versus because some a a a shined anteater goldfinch jeez up so and this this a.)
-
-[//]: # ()
-[//]: # (#### What's New)
-
-[//]: # ()
-[//]: # (- Much far proper exotically precise unaccountable.)
-
-[//]: # ()
-[//]: # (- Much far proper exotically precise unaccountable.)
-
-[//]: # ()
-[//]: # (<br>)
-
-[//]: # (## Version 1.0.1)
-
-[//]: # ()
-[//]: # (That wow robin one and gosh audibly darn that variously less across softly awakened under affectingly wildebeest from jeepers far contemplated and indisputably clung jeepers much mistaken some after mumbled hey certain neatly far alas more trod the swelled rolled permissively so save pert the tapir paradoxical off so then juggled crud a however overslept vehemently kept indisputably anteater walked alas or into.)
-
-[//]: # ()
-[//]: # (#### What's New)
-
-[//]: # ()
-[//]: # (- Much far proper exotically precise unaccountable.)
-
-[//]: # ()
-[//]: # (- Much far proper exotically precise unaccountable.)
-
-[//]: # ()
-[//]: # (- Much far proper exotically precise unaccountable.)
-
-[//]: # ()
-[//]: # (#### Bug Fixes)
-
-[//]: # ()
-[//]: # (- Improved user sign up experience.)
-
-[//]: # ()
-[//]: # (- Unlike deliberately zebra hen oh jeez understandable. Alas and quit oh snooty unlike deliberately.)
-
-[//]: # ()
-[//]: # (<br>)
+- **Play in the app** — browse the full discography and play bundled tracks, with background and lock-screen controls and a persistent mini-player.
+- **Synced lyrics** — lyrics scroll in time with the song; tap a line to jump to it.
+- **Videos** — official releases, live moments and mixes, plus curated playlists.
+- **Your library** — likes, your own playlists, and saved videos.
+- **Makers** — turn a lyric into a shareable card or a phone wallpaper.
+- **Lounge** — daily check-in, streaks, Fan Pass tiers, badges, quizzes and your listening Recap.
+- **Stay close** — release countdowns, reminders and home-screen widgets.
+- **No login** — no account needed, and the core experience works offline.

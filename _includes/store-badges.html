@@ -1,0 +1,14 @@
+{%- comment -%}
+Official store badges, unmodified: Apple's SVG and Google's PNG with its
+transparent margin trimmed off. Both brands forbid altering the artwork, so the
+clear space Google requires (at least a quarter of the badge height) is supplied
+by the flex gap in `.storeBadges` rather than baked into the image.
+{%- endcomment -%}
+<div class="storeBadges">
+	<a href="{{ site.appstore_link }}" target="_blank" rel="noopener">
+		<img src="{{ '/assets/appstore.svg' | relative_url }}" width="156" height="52" alt="Download Unrearix on the App Store">
+	</a>
+	<a href="{{ site.playstore_link }}" target="_blank" rel="noopener">
+		<img src="{{ '/assets/playstore.png' | relative_url }}" width="175" height="52" alt="Get Unrearix on Google Play">
+	</a>
+</div>

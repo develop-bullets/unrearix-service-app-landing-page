@@ -1,21 +1,74 @@
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<base target="_blank">
+	<meta name="color-scheme" content="dark">
+	<meta name="theme-color" content="#111014">
 
-	<title class="pageTitle">{{ site.page_title }}</title>
+	{%- if page.title -%}
+		{%- assign page_title = page.title | append: " — Unrearix" -%}
+	{%- else -%}
+		{%- assign page_title = site.seo_title -%}
+	{%- endif -%}
+	{%- assign og_url = page.url | absolute_url -%}
+	{%- assign og_image = site.og_image | absolute_url -%}
+
+	<title>{{ page_title }}</title>
 	<meta name="description" content="{{ site.app_description }}">
+	<link rel="canonical" href="{{ og_url }}">
 
-	<link rel="shortcut icon" href="{{ site.app_icon | relative_url }}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="{{ site.app_name }}">
+	<meta property="og:title" content="{{ page_title }}">
+	<meta property="og:description" content="{{ site.app_description }}">
+	<meta property="og:url" content="{{ og_url }}">
+	<meta property="og:image" content="{{ og_image }}">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Unrearix — music, video and lounge in one app">
 
-    <link rel="canonical" href="{{ site.canonical_url }}" />
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@unrearix">
+	<meta name="twitter:title" content="{{ page_title }}">
+	<meta name="twitter:description" content="{{ site.app_description }}">
+	<meta name="twitter:image" content="{{ og_image }}">
 
-	<!-- Smart App Banner -->
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/icons/favicon-32.png' | relative_url }}">
+	<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/icons/icon-192.png' | relative_url }}">
+	<link rel="apple-touch-icon" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
+
 	{% if site.enable_smart_app_banner %}
 		<meta name="apple-itunes-app" content="app-id={{ site.ios_app_id }}">
 	{% endif %}
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="preload" as="font" type="font/woff2" href="{{ '/assets/fonts/anton-latin.woff2' | relative_url }}" crossorigin>
+	<link rel="preload" as="font" type="font/woff2" href="{{ '/assets/fonts/archivo-latin.woff2' | relative_url }}" crossorigin>
 	<link rel="stylesheet" href="{{ '/main.css' | relative_url }}">
+
+	{% if page.url == '/' %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": "Unrearix: Boundary-Free Sound",
+		"applicationCategory": "MusicApplication",
+		"operatingSystem": "iOS, Android",
+		"description": {{ site.app_description | jsonify }},
+		"url": {{ site.url | jsonify }},
+		"image": {{ og_image | jsonify }},
+		"offers": {
+			"@type": "Offer",
+			"price": "0",
+			"priceCurrency": "USD"
+		},
+		"author": {
+			"@type": "Organization",
+			"name": "Bullets"
+		},
+		"downloadUrl": [
+			{{ site.appstore_link | jsonify }},
+			{{ site.playstore_link | jsonify }}
+		]
+	}
+	</script>
+	{% endif %}
 </head>

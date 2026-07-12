@@ -1,0 +1,35 @@
+<section class="section screens" id="screens">
+	<div class="sectionHead">
+		<span class="kicker">Inside the app</span>
+		<h2>Six screens, one home</h2>
+		<p>Artist, music, videos, library and lounge — the whole team in one place.</p>
+	</div>
+
+	<div class="screens__rail">
+		<div class="rail">
+			{% for s in site.screens %}
+			<figure class="rail__item">
+				<div class="device">
+					<picture>
+						<source
+							type="image/webp"
+							srcset="{{ '/assets/screens/' | append: s.file | append: '.webp' | relative_url }} 330w,
+							        {{ '/assets/screens/' | append: s.file | append: '@2x.webp' | relative_url }} 660w"
+							sizes="(max-width: 767px) 68vw, 280px">
+						<img
+							src="{{ '/assets/screens/' | append: s.file | append: '.png' | relative_url }}"
+							width="330" height="717"
+							loading="lazy" decoding="async"
+							alt="{{ s.alt }}">
+					</picture>
+				</div>
+				<figcaption class="rail__caption">
+					<span class="kicker">{{ s.kicker }}</span>
+					<p>{{ s.headline }}</p>
+				</figcaption>
+			</figure>
+			{% endfor %}
+		</div>
+		<span class="railHint">Scroll to see more →</span>
+	</div>
+</section>

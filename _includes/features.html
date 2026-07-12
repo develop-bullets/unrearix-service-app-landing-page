@@ -1,26 +1,21 @@
-<div class="features">
+<section class="section features" id="features">
+	<div class="container">
+		<div class="sectionHead">
+			<span class="kicker">What you get</span>
+			<h2>Made for listening</h2>
+			<p>Unrearix is a creative music team under one artist brand, moving freely across genres, styles and voices. Every release leads with feeling.</p>
+		</div>
 
-    {% for feature in site.features %}
-
-    {% if feature.title %}
-    <div class="feature">
-        <div>
-            <span class="fa-stack fa-1x">
-                <i class="iconBack fas fa-circle fa-stack-2x"></i>
-                <i class="iconTop fas fa-{{ feature.fontawesome_icon_name }} fa-stack-1x"></i>
-            </span>
-        </div>
-        <div class="featureText">
-            <h3>
-                {{ feature.title }}
-            </h3>
-            <p>
-                {{ feature.description }}
-            </p>
-        </div>
-    </div>
-    {% endif %}
-
-    {% endfor %}
-
-</div>
+		<div class="featureGrid">
+			{% for feature in site.features %}
+			<div class="feature">
+				<div class="iconTile">
+					<svg class="icon" aria-hidden="true"><use href="#ic-{{ feature.icon }}"/></svg>
+				</div>
+				<h3>{{ feature.title }}</h3>
+				<p>{{ feature.description }}</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

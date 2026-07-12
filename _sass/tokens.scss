@@ -1,0 +1,53 @@
+// Brand tokens — mirrors the app's RIOT theme.
+// Source of truth: unrearix/docs/design-tokens.md (lib/core/config/theme/).
+// Dark-only here: the landing page is a brand surface, like the app's splash and onboarding.
+
+// Surfaces
+$bg:          #111014;
+$surface:     #1a191f;
+$surface-hi:  #232229;
+$divider:     #2c2a33;
+
+// Text
+$text:        #fafafa;
+$muted:       #9c99a6;
+
+// Accent — the single workhorse. Hot Magenta.
+$accent:      #ff2da8;
+$on-accent:   #14000b;
+
+// Clash palette — expressive surfaces only (tier badges, decorative glows).
+// Never for functional UI, per design-tokens.md.
+$blue:        #2d6bff;
+$lime:        #c6ff3d;
+$orange:      #ff6a1a;
+
+// Type
+$font-display: "Anton", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+$font-body:    "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+// Radii — AppRadii
+$r-card:   14px;
+$r-btn:    14px;
+$r-thumb:  12px;
+$r-pill:   999px;
+$r-device: 44px;
+
+// Spacing — AppGap 4px rhythm
+$gap-sm:      8px;
+$gap-md:      12px;
+$gap-lg:      16px;
+$gap-xl:      20px;
+$gap-page:    24px;
+$gap-section: 28px;
+
+// Motion — AppDurations
+$t-fast:     150ms;
+$t-standard: 250ms;
+
+$maxw: 1120px;
+
+// Breakpoints
+$bp-sm: 560px;
+$bp-md: 768px;
+$bp-lg: 1000px;
